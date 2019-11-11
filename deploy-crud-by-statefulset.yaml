@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: crud-statefulset
+  labels:
+    app: crud-statefulset
+spec:
+  ports:
+    - port: 80
+  selector:
+    app: crud-statefulset
+    tier: frontend
+  type: LoadBalancer
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: StatefulSet
+metadata:
+  name: crud-statefulset
+  labels:
+    app: crud-statefulset
+spec:
+  selector:
+    matchLabels:
+      app: crud-statefulset
+      tier: frontend
+  replicas: 1
+  serviceName: crud-statefulset-frontend
+  template:
+    metadata:
+      labels:
+        app: crud-statefulset
+        tier: frontend
+    spec:
+      containers:
+                                                [ Read 61 lines ]
+^G Get Help     ^O Write Out    ^W Where Is     ^K Cut Text     ^J Justify      ^C Cur Pos      M-U Undo
+^X Exit         ^R Read File    ^\ Replace      ^U Uncut Text   ^T To Spell     ^_ Go To Line   M-E Redo

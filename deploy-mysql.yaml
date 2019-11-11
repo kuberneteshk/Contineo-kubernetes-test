@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: crud-mysql
+  labels:
+    app: crud
+spec:
+  ports:
+    - port: 3306
+  selector:
+    app: crud
+    tier: mysql
+  clusterIP: None
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: crud-mysql
+  labels:
+    app: crud
+spec:
+  selector:
+    matchLabels:
+      app: crud
+      tier: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: crud
+        tier: mysql
+    spec:
+      containers:
+                                                [ Read 53 lines ]
+^G Get Help     ^O Write Out    ^W Where Is     ^K Cut Text     ^J Justify      ^C Cur Pos      M-U Undo
+^X Exit         ^R Read File    ^\ Replace      ^U Uncut Text   ^T To Spell     ^_ Go To Line   M-E Redo

@@ -1,6 +1,4 @@
-  GNU nano 2.9.3                              dashboard-account-rbac.yaml                                        
-
-
+                                    
 # ------------------- Dashboard Service Account ------------------- #
 
 apiVersion: v1
